@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPSS Exam Prep — EUR International Psychology</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #0f0e0c;
+  --bg2:      #181612;
+  --bg3:      #201e18;
+  --bg4:      #272420;
+  --gold:     #c9a96e;
+  --gold-dim: #7a6040;
+  --gold-hi:  #f0d898;
+  --text:     #ede5d5;
+  --text2:    #a89880;
+  --text3:    #665e50;
+  --border:   #2c2820;
+  --border2:  #3c3628;
+
+  /* Procedure colour system — 8 categories */
+  --c-blue:   #3d7ab5;  --c-blue-bg:   #0e2030;  --c-blue-border: #1a3850;
+  --c-green:  #4a9460;  --c-green-bg:  #0c2018;  --c-green-border:#1a3c28;
+  --c-amber:  #c9a040;  --c-amber-bg:  #281e08;  --c-amber-border:#3c3018;
+  --c-red:    #c05050;  --c-red-bg:    #280c0c;  --c-red-border:  #502020;
+  --c-purple: #8068c0;  --c-purple-bg: #181028;  --c-purple-border:#2c2048;
+  --c-teal:   #3a9888;  --c-teal-bg:   #0a2420;  --c-teal-border: #183c38;
+  --c-coral:  #c07050;  --c-coral-bg:  #280e08;  --c-coral-border:#503020;
+  --c-pink:   #b06090;  --c-pink-bg:   #200c18;  --c-pink-border: #401830;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── HEADER ─────────────────────────────── */
+header {
+  padding: 3rem 2.5rem 2.5rem;
+  border-bottom: 1px solid var(--border2);
+  background: linear-gradient(160deg, #171510 0%, #0f0e0c 60%);
+  position: relative;
+}
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+.h-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  color: var(--gold);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+}
+.h-sub {
+  font-size: 15px;
+  color: var(--text2);
+  margin-bottom: 1.25rem;
+}
+.h-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.h-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border2);
+  color: var(--text3);
+  letter-spacing: 0.05em;
+}
+
+/* ── COLOUR LEGEND BAR ───────────────────── */
+.legend-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 1rem 2.5rem;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+.legend-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--text3);
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--text2);
+}
+.legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── TABS ────────────────────────────────── */
+.tabs-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.tabs {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 1.75rem;
+  height: 56px;
+  border: none;
+  background: none;
+  color: var(--text3);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.tab:hover { color: var(--text2); }
+.tab.active { color: var(--gold); border-bottom-color: var(--gold); font-weight: 500; }
+.tab-icon {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  background: var(--bg3);
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.tab.active .tab-icon { background: rgba(201,169,110,0.15); }
+
+/* ── PANELS ──────────────────────────────── */
+.panel { display: none; }
+.panel.active { display: block; }
+
+.panel-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+.panel-intro {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.75;
+  max-width: 720px;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--gold);
+  margin: 2.5rem 0 1.25rem;
+}
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 0.25rem;
+}
+
+/* ── SHARED COMPONENTS ───────────────────── */
+.tip {
+  display: flex;
+  gap: 12px;
+  background: rgba(201,169,110,0.07);
+  border-left: 3px solid var(--gold-dim);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.65;
+  margin-top: 14px;
+}
+.warn {
+  display: flex;
+  gap: 12px;
+  background: rgba(192,80,80,0.08);
+  border-left: 3px solid var(--c-red);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #d09090;
+  line-height: 1.65;
+  margin-top: 14px;
+}
+.tip-icon, .warn-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+.path {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: var(--bg4);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--gold-dim);
+  letter-spacing: 0.03em;
+  margin: 6px 0 14px;
+  flex-wrap: wrap;
+}
+.path-sep { color: var(--text3); margin: 0 6px; }
+
+.code {
+  background: var(--bg4);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 7px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--c-teal);
+}
+
+.steps-list { list-style: none; margin: 6px 0; }
+.steps-list li {
+  display: flex;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+  font-size: 14.5px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+.steps-list li:last-child { border-bottom: none; }
+.step-num {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.steps-list li strong { color: var(--text); font-weight: 500; }
+
+/* ══════════════════════════════════════════
+   PANEL 1 — DECIDE
+══════════════════════════════════════════ */
+.decide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.dc {
+  border-radius: 10px;
+  border: 1px solid;
+  padding: 1.1rem 1.25rem;
+  transition: filter 0.2s, transform 0.15s;
+  cursor: default;
+}
+.dc:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+.dc-kw {
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  opacity: 0.75;
+}
+.dc-proc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.dc-path {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  opacity: 0.65;
+  line-height: 1.5;
+}
+
+/* colour variants */
+.dc-blue   { background:var(--c-blue-bg);   border-color:var(--c-blue-border);   color:#a0c8e8; }
+.dc-blue   .dc-proc { color: #c0d8f0; }
+.dc-green  { background:var(--c-green-bg);  border-color:var(--c-green-border);  color:#90c8a0; }
+.dc-green  .dc-proc { color: #b0d8b8; }
+.dc-amber  { background:var(--c-amber-bg);  border-color:var(--c-amber-border);  color:#d8b870; }
+.dc-amber  .dc-proc { color: #f0d090; }
+.dc-red    { background:var(--c-red-bg);    border-color:var(--c-red-border);    color:#d09090; }
+.dc-red    .dc-proc { color: #e8b0b0; }
+.dc-purple { background:var(--c-purple-bg); border-color:var(--c-purple-border); color:#b0a0d8; }
+.dc-purple .dc-proc { color: #c8b8f0; }
+.dc-teal   { background:var(--c-teal-bg);   border-color:var(--c-teal-border);   color:#80c8b8; }
+.dc-teal   .dc-proc { color: #a0d8c8; }
+.dc-coral  { background:var(--c-coral-bg);  border-color:var(--c-coral-border);  color:#d0a888; }
+.dc-coral  .dc-proc { color: #e8c0a0; }
+.dc-pink   { background:var(--c-pink-bg);   border-color:var(--c-pink-border);   color:#d0a0b8; }
+.dc-pink   .dc-proc { color: #e8b8d0; }
+
+/* distinctions */
+.dist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 12px;
+}
+.dist-card {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+}
+.dist-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.dist-row { display: flex; gap: 10px; align-items: stretch; }
+.dist-side {
+  flex: 1;
+  background: var(--bg3);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.dist-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 5px;
+}
+.dist-val { color: var(--text2); }
+.dist-vs {
+  display: flex;
+  align-items: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text3);
+  flex-shrink: 0;
+}
+
+.q8q9-box {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+}
+.q8q9-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.q8q9-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.q8q9-side {
+  background: var(--bg3);
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+}
+.q8q9-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 6px;
+}
+.q8q9-q { font-size: 14px; color: var(--text2); font-style: italic; margin-bottom: 8px; line-height: 1.5; }
+.q8q9-a { font-size: 13px; color: var(--gold-dim); font-family: 'DM Mono', monospace; }
+
+/* ══════════════════════════════════════════
+   PANEL 2 — RECIPES
+══════════════════════════════════════════ */
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 16px;
+}
+
+.rc {
+  border-radius: 12px;
+  border: 1px solid;
+  overflow: hidden;
+  transition: transform 0.15s, filter 0.2s;
+}
+.rc:hover { filter: brightness(1.05); transform: translateY(-2px); }
+
+.rc-blue   { background:var(--c-blue-bg);   border-color:var(--c-blue-border); }
+.rc-green  { background:var(--c-green-bg);  border-color:var(--c-green-border); }
+.rc-amber  { background:var(--c-amber-bg);  border-color:var(--c-amber-border); }
+.rc-red    { background:var(--c-red-bg);    border-color:var(--c-red-border); }
+.rc-purple { background:var(--c-purple-bg); border-color:var(--c-purple-border); }
+.rc-teal   { background:var(--c-teal-bg);   border-color:var(--c-teal-border); }
+.rc-coral  { background:var(--c-coral-bg);  border-color:var(--c-coral-border); }
+.rc-pink   { background:var(--c-pink-bg);   border-color:var(--c-pink-border); }
+
+.rc-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.rc-colour-bar {
+  width: 4px;
+  height: 40px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.rc-blue   .rc-colour-bar { background: var(--c-blue); }
+.rc-green  .rc-colour-bar { background: var(--c-green); }
+.rc-amber  .rc-colour-bar { background: var(--c-amber); }
+.rc-red    .rc-colour-bar { background: var(--c-red); }
+.rc-purple .rc-colour-bar { background: var(--c-purple); }
+.rc-teal   .rc-colour-bar { background: var(--c-teal); }
+.rc-coral  .rc-colour-bar { background: var(--c-coral); }
+.rc-pink   .rc-colour-bar { background: var(--c-pink); }
+
+.rc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.rc-blue   .rc-title { color: #c0d8f0; }
+.rc-green  .rc-title { color: #b0d8b8; }
+.rc-amber  .rc-title { color: #f0d090; }
+.rc-red    .rc-title { color: #e8b0b0; }
+.rc-purple .rc-title { color: #c8b8f0; }
+.rc-teal   .rc-title { color: #a0d8c8; }
+.rc-coral  .rc-title { color: #e8c0a0; }
+.rc-pink   .rc-title { color: #e8b8d0; }
+
+.rc-sub { font-size: 12px; color: var(--text3); margin-top: 2px; font-style: italic; }
+
+.rc-body { padding: 1.1rem 1.4rem; }
+
+/* colour-specific step numbers */
+.rc-blue   .step-num { background:rgba(61,122,181,0.2); color:#78b4e0; }
+.rc-green  .step-num { background:rgba(74,148,96,0.2);  color:#80c090; }
+.rc-amber  .step-num { background:rgba(201,160,64,0.2); color:#d4b060; }
+.rc-red    .step-num { background:rgba(192,80,80,0.2);  color:#d09090; }
+.rc-purple .step-num { background:rgba(128,104,192,0.2);color:#b0a0d4; }
+.rc-teal   .step-num { background:rgba(58,152,136,0.2); color:#70c0b0; }
+.rc-coral  .step-num { background:rgba(192,112,80,0.2); color:#d0a880; }
+.rc-pink   .step-num { background:rgba(176,96,144,0.2); color:#d0a0b8; }
+
+.rc-when {
+  font-size: 13.5px;
+  color: var(--text2);
+  line-height: 1.65;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.rc-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.kw-chip {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  border: 1px solid;
+  font-style: italic;
+  font-family: 'DM Sans', sans-serif;
+}
+.rc-blue   .kw-chip { background:rgba(61,122,181,0.12); border-color:rgba(61,122,181,0.3); color:#90c0e0; }
+.rc-green  .kw-chip { background:rgba(74,148,96,0.12);  border-color:rgba(74,148,96,0.3);  color:#80b890; }
+.rc-amber  .kw-chip { background:rgba(201,160,64,0.12); border-color:rgba(201,160,64,0.3); color:#c8a858; }
+.rc-red    .kw-chip { background:rgba(192,80,80,0.12);  border-color:rgba(192,80,80,0.3);  color:#c89090; }
+.rc-purple .kw-chip { background:rgba(128,104,192,0.12);border-color:rgba(128,104,192,0.3);color:#a890c8; }
+.rc-teal   .kw-chip { background:rgba(58,152,136,0.12); border-color:rgba(58,152,136,0.3); color:#70b8a8; }
+.rc-coral  .kw-chip { background:rgba(192,112,80,0.12); border-color:rgba(192,112,80,0.3); color:#c8a080; }
+.rc-pink   .kw-chip { background:rgba(176,96,144,0.12); border-color:rgba(176,96,144,0.3); color:#c898b0; }
+
+/* ══════════════════════════════════════════
+   PANEL 3 — EXAM
+══════════════════════════════════════════ */
+.q-list { display: flex; flex-direction: column; gap: 10px; }
+
+.q-card {
+  border-radius: 12px;
+  border: 1px solid var(--border2);
+  background: var(--bg2);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.q-card.open { border-color: var(--gold-dim); }
+
+.q-trigger {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.q-trigger:hover { background: var(--bg3); }
+
+.q-badge {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  flex-shrink: 0;
+  border: 1px solid;
+}
+
+.q-text { flex: 1; }
+.q-title { font-size: 15px; color: var(--text); line-height: 1.5; }
+.q-title strong { color: var(--gold-hi); font-weight: 500; }
+.q-dataset { font-size: 12px; color: var(--text3); margin-top: 3px; font-family: 'DM Mono', monospace; letter-spacing: 0.03em; }
+
+.q-proc-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.q-chevron { color: var(--text3); font-size: 12px; transition: transform 0.25s; flex-shrink: 0; }
+.q-card.open .q-chevron { transform: rotate(180deg); }
+
+.q-body { display: none; padding: 0 1.5rem 1.5rem; }
+.q-body.open { display: block; }
+.q-divider { height: 1px; background: var(--border); margin-bottom: 1.25rem; }
+
+/* Q card colours by procedure type */
+.q-blue   .q-badge { background:var(--c-blue-bg);   border-color:var(--c-blue-border);   color:#90c0e0; }
+.q-blue   .q-proc-tag { background:var(--c-blue-bg);   border-color:var(--c-blue-border);   color:#90c0e0; }
+.q-blue   .step-num { background:rgba(61,122,181,0.2); color:#78b4e0; }
+
+.q-green  .q-badge { background:var(--c-green-bg);  border-color:var(--c-green-border);  color:#80c090; }
+.q-green  .q-proc-tag { background:var(--c-green-bg);  border-color:var(--c-green-border);  color:#80c090; }
+.q-green  .step-num { background:rgba(74,148,96,0.2);  color:#80c090; }
+
+.q-amber  .q-badge { background:var(--c-amber-bg);  border-color:var(--c-amber-border);  color:#c8a858; }
+.q-amber  .q-proc-tag { background:var(--c-amber-bg);  border-color:var(--c-amber-border);  color:#c8a858; }
+.q-amber  .step-num { background:rgba(201,160,64,0.2); color:#d4b060; }
+
+.q-coral  .q-badge { background:var(--c-coral-bg);  border-color:var(--c-coral-border);  color:#c8a080; }
+.q-coral  .q-proc-tag { background:var(--c-coral-bg);  border-color:var(--c-coral-border);  color:#c8a080; }
+.q-coral  .step-num { background:rgba(192,112,80,0.2); color:#d0a880; }
+
+.q-purple .q-badge { background:var(--c-purple-bg); border-color:var(--c-purple-border); color:#a890c8; }
+.q-purple .q-proc-tag { background:var(--c-purple-bg); border-color:var(--c-purple-border); color:#a890c8; }
+.q-purple .step-num { background:rgba(128,104,192,0.2);color:#b0a0d4; }
+
+.q-teal   .q-badge { background:var(--c-teal-bg);   border-color:var(--c-teal-border);   color:#70b8a8; }
+.q-teal   .q-proc-tag { background:var(--c-teal-bg);   border-color:var(--c-teal-border);   color:#70b8a8; }
+.q-teal   .step-num { background:rgba(58,152,136,0.2); color:#70c0b0; }
+
+.q-red    .q-badge { background:var(--c-red-bg);    border-color:var(--c-red-border);    color:#c89090; }
+.q-red    .q-proc-tag { background:var(--c-red-bg);    border-color:var(--c-red-border);    color:#c89090; }
+.q-red    .step-num { background:rgba(192,80,80,0.2);  color:#d09090; }
+
+/* ══════════════════════════════════════════
+   PANEL 4 — CHEATSHEET
+══════════════════════════════════════════ */
+.cheat-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 780px) { .cheat-cols { grid-template-columns: 1fr; } }
+
+.cheat-card {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.cheat-card-head {
+  padding: 1rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--gold);
+}
+.cheat-card-body { padding: 1rem 1.4rem; }
+
+.danger-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text2);
+}
+.danger-item:last-child { border-bottom: none; }
+.danger-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--c-red);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+.danger-item strong { color: #d09090; }
+
+.check-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text2);
+}
+.check-item:last-child { border-bottom: none; }
+.check-box {
+  width: 18px; height: 18px;
+  border: 1.5px solid var(--gold-dim);
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.check-item strong { color: var(--gold-dim); font-weight: 500; }
+
+.full-table-wrap {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 1.25rem;
+}
+table { width: 100%; border-collapse: collapse; }
+thead th {
+  padding: 10px 16px;
+  background: var(--bg3);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  text-align: left;
+  border-bottom: 1px solid var(--border2);
+}
+tbody td {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  vertical-align: top;
+  line-height: 1.55;
+}
+tbody td:first-child { color: var(--text2); font-style: italic; }
+tbody td:last-child { color: var(--text2); }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr.danger td { background: rgba(192,80,80,0.04); }
+tbody tr.danger td:last-child { color: #c08080; }
+
+.kw-table tbody td:first-child { font-style: normal; color: var(--text2); }
+
+.final-box {
+  background: rgba(201,169,110,0.06);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 1.4rem 1.6rem;
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.75;
+  margin-top: 1.5rem;
+}
+.final-box strong { color: var(--gold); }
+
+/* ── SCROLLBAR ───────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+/* ── RESPONSIVE ──────────────────────────── */
+@media (max-width: 700px) {
+  .panel-body { padding: 1.5rem 1rem 3rem; }
+  .recipes-grid { grid-template-columns: 1fr; }
+  .decide-grid { grid-template-columns: 1fr; }
+  .dist-grid { grid-template-columns: 1fr; }
+  .q8q9-grid { grid-template-columns: 1fr; }
+  .q-trigger { grid-template-columns: auto 1fr auto; }
+  .q-proc-tag { display: none; }
+  header { padding: 2rem 1.25rem 1.75rem; }
+  .legend-bar { padding: 0.75rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="h-eyebrow">EUR · International Psychology · Methods &amp; Statistics</div>
+  <h1>SPSS Exam Preparation</h1>
+  <p class="h-sub">Every procedure from both practical guides — with colour coding, step-by-step recipes, and a full practice exam walkthrough.</p>
+  <div class="h-tags">
+    <span class="h-tag">SPSS Practical Guide</span>
+    <span class="h-tag">Guide Set 2</span>
+    <span class="h-tag">Practice Exam 2019–2020</span>
+  </div>
+</header>
+
+<!-- COLOUR LEGEND -->
+<div class="legend-bar">
+  <span class="legend-label">Colour key</span>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--c-blue)"></div> Frequencies / Descriptives</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--c-green)"></div> Split File / Case Summaries / Compute</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--c-amber)"></div> Select Cases / Rank Cases / Explore</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--c-teal)"></div> Recode / Crosstabs / Count</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--c-purple)"></div> Z-scores</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--c-red)"></div> Independent T-test</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--c-pink)"></div> Paired T-test</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--c-coral)"></div> Compare Means / Count N</div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('decide',this)">
+      <div class="tab-icon">🗺</div> Which procedure?
+    </button>
+    <button class="tab" onclick="switchTab('recipes',this)">
+      <div class="tab-icon">📖</div> Step-by-step recipes
+    </button>
+    <button class="tab" onclick="switchTab('exam',this)">
+      <div class="tab-icon">✏️</div> Practice exam
+    </button>
+    <button class="tab" onclick="switchTab('cheat',this)">
+      <div class="tab-icon">⚡</div> Exam day cheatsheet
+    </button>
+  </div>
+</div>
+
+<!-- ═══════════════ PANEL 1: DECIDE ═══════════════ -->
+<div id="decide" class="panel active">
+<div class="panel-body">
+  <p class="panel-intro">Read the question keywords → find the matching card → know your procedure before touching SPSS. Colour = category.</p>
+
+  <div class="section-eyebrow">All 16 procedures</div>
+  <div class="section-title">Which procedure do I need?</div>
+
+  <div class="decide-grid">
+    <div class="dc dc-blue">
+      <div class="dc-kw">"how often" · "what percentage" · "distribution" · "how many participants scored…"</div>
+      <div class="dc-proc">Frequencies</div>
+      <div class="dc-path">Analyze → Descriptive Statistics → Frequencies</div>
+    </div>
+    <div class="dc dc-green">
+      <div class="dc-kw">"list individual scores" · "show raw data per case" · "for each participant show their value"</div>
+      <div class="dc-proc">Case Summaries</div>
+      <div class="dc-path">Analyze → Reports → Case Summaries</div>
+    </div>
+    <div class="dc dc-green">
+      <div class="dc-kw">"mean / SD for a subgroup" · "for males only" · "per education level" — one group condition</div>
+      <div class="dc-proc">Split File + Descriptives</div>
+      <div class="dc-path">Data → Split File → then Analyze</div>
+    </div>
+    <div class="dc dc-amber">
+      <div class="dc-kw">"mean for group X <em>and</em> condition Y simultaneously" — two filters at once</div>
+      <div class="dc-proc">Select Cases (compound)</div>
+      <div class="dc-path">Data → Select Cases → If: A = 1 &amp; B = 0</div>
+    </div>
+    <div class="dc dc-coral">
+      <div class="dc-kw">"compare averages across groups" · "mean per group" · "does score differ between…"</div>
+      <div class="dc-proc">Compare Means</div>
+      <div class="dc-path">Analyze → Compare Means → Means</div>
+    </div>
+    <div class="dc dc-purple">
+      <div class="dc-kw">"z-score of participant ID X" · "standardise" · "how many SDs above mean" · "outlier"</div>
+      <div class="dc-proc">Z-scores (Descriptives)</div>
+      <div class="dc-path">Analyze → Descriptives → tick Save standardised</div>
+    </div>
+    <div class="dc dc-teal">
+      <div class="dc-kw">"recode into categories" · "reverse score" · "negatively worded item" · "collapse groups"</div>
+      <div class="dc-proc">Recode into Different Variables</div>
+      <div class="dc-path">Transform → Recode → Different Variables</div>
+    </div>
+    <div class="dc dc-green">
+      <div class="dc-kw">"compute total / mean score" · "composite score" · "sum the items" · "combine items"</div>
+      <div class="dc-proc">Compute Variable</div>
+      <div class="dc-path">Transform → Compute Variable</div>
+    </div>
+    <div class="dc dc-teal">
+      <div class="dc-kw">"how many symptoms per participant" · "count how many times value X appears per person"</div>
+      <div class="dc-proc">Count Values Within Cases</div>
+      <div class="dc-path">Transform → Count Values Within Cases</div>
+    </div>
+    <div class="dc dc-amber">
+      <div class="dc-kw">"check normality" · "test assumptions" · "is the distribution normal" · "before running a t-test"</div>
+      <div class="dc-proc">Explore</div>
+      <div class="dc-path">Analyze → Descriptive Statistics → Explore</div>
+    </div>
+    <div class="dc dc-blue">
+      <div class="dc-kw">"what value belongs to the Nth percentile" · "quartile" · "median at percentile"</div>
+      <div class="dc-proc">Frequencies → Percentiles</div>
+      <div class="dc-path">Analyze → Frequencies → Statistics → Percentiles</div>
+    </div>
+    <div class="dc dc-amber">
+      <div class="dc-kw">"which percentile does participant X's score belong to" · "rank order" · "rank the participants"</div>
+      <div class="dc-proc">Rank Cases</div>
+      <div class="dc-path">Transform → Rank Cases → Fractional rank %</div>
+    </div>
+    <div class="dc dc-coral">
+      <div class="dc-kw">"how many scored above X on BOTH tests" · "number meeting two criteria"</div>
+      <div class="dc-proc">Select Cases → count N</div>
+      <div class="dc-path">var1 &gt; X &amp; var2 &gt; X → count Valid N</div>
+    </div>
+    <div class="dc dc-teal">
+      <div class="dc-kw">"relationship between two categorical variables" · "% within group" · "chi-square"</div>
+      <div class="dc-proc">Crosstabs</div>
+      <div class="dc-path">Analyze → Descriptive Statistics → Crosstabs</div>
+    </div>
+    <div class="dc dc-red">
+      <div class="dc-kw">"test difference between two <em>different</em> groups" · "t-score" · "males vs females"</div>
+      <div class="dc-proc">Independent Samples T-test</div>
+      <div class="dc-path">Analyze → Compare Means → Ind. Samples T-test</div>
+    </div>
+    <div class="dc dc-pink">
+      <div class="dc-kw">"before and after" · "pre-test post-test" · "same participants measured twice" · "did scores change"</div>
+      <div class="dc-proc">Paired Samples T-test</div>
+      <div class="dc-path">Analyze → Compare Means → Paired-Samples T-test</div>
+    </div>
+  </div>
+
+  <!-- KEY DISTINCTIONS -->
+  <div class="section-eyebrow" style="margin-top:2.5rem">From Guide Set 2</div>
+  <div class="section-title">Key distinctions to memorise</div>
+  <div class="dist-grid">
+    <div class="dist-card">
+      <div class="dist-card-title">Independent vs Paired T-test</div>
+      <div class="dist-row">
+        <div class="dist-side"><span class="dist-lbl" style="color:#90c0e0">Independent</span><span class="dist-val">DIFFERENT people in each group (males vs females, control vs treatment)</span></div>
+        <div class="dist-vs">vs</div>
+        <div class="dist-side"><span class="dist-lbl" style="color:#e8b8d0">Paired</span><span class="dist-val">SAME people measured TWICE (before/after, pre/post)</span></div>
+      </div>
+    </div>
+    <div class="dist-card">
+      <div class="dist-card-title">Recode vs Compute</div>
+      <div class="dist-row">
+        <div class="dist-side"><span class="dist-lbl" style="color:#a0d8c8">Recode</span><span class="dist-val">CHANGING existing values (reverse scores, collapse into categories)</span></div>
+        <div class="dist-vs">vs</div>
+        <div class="dist-side"><span class="dist-lbl" style="color:#b0d8b8">Compute</span><span class="dist-val">CREATING a new variable from a formula (sum, mean of items)</span></div>
+      </div>
+    </div>
+    <div class="dist-card">
+      <div class="dist-card-title">Explore vs Frequencies</div>
+      <div class="dist-row">
+        <div class="dist-side"><span class="dist-lbl" style="color:#d8b870">Explore</span><span class="dist-val">NORMALITY CHECK + full detail — Shapiro-Wilk, skewness, kurtosis, boxplot</span></div>
+        <div class="dist-vs">vs</div>
+        <div class="dist-side"><span class="dist-lbl" style="color:#c0d8f0">Frequencies</span><span class="dist-val">COUNTS + distribution + percentiles — not for normality testing</span></div>
+      </div>
+    </div>
+    <div class="dist-card">
+      <div class="dist-card-title">Crosstabs vs Compare Means</div>
+      <div class="dist-row">
+        <div class="dist-side"><span class="dist-lbl" style="color:#a0d8c8">Crosstabs</span><span class="dist-val">BOTH variables are categorical → frequencies and percentages</span></div>
+        <div class="dist-vs">vs</div>
+        <div class="dist-side"><span class="dist-lbl" style="color:#e8c0a0">Compare Means</span><span class="dist-val">Continuous OUTCOME + categorical GROUP → means and SDs</span></div>
+      </div>
+    </div>
+    <div class="dist-card">
+      <div class="dist-card-title">Levene's Test (Independent T-test)</div>
+      <div class="dist-row">
+        <div class="dist-side"><span class="dist-lbl" style="color:#80c090">Sig. &gt; .05</span><span class="dist-val">Equal variances assumed → use TOP row of output</span></div>
+        <div class="dist-vs">→</div>
+        <div class="dist-side"><span class="dist-lbl" style="color:#c89090">Sig. &lt; .05</span><span class="dist-val">Equal variances NOT assumed → use BOTTOM row</span></div>
+      </div>
+    </div>
+    <div class="dist-card">
+      <div class="dist-card-title">Shapiro-Wilk (Explore)</div>
+      <div class="dist-row">
+        <div class="dist-side"><span class="dist-lbl" style="color:#80c090">Sig. &gt; .05</span><span class="dist-val">Data IS normal → proceed with parametric test (counterintuitive!)</span></div>
+        <div class="dist-vs">→</div>
+        <div class="dist-side"><span class="dist-lbl" style="color:#c89090">Sig. &lt; .05</span><span class="dist-val">Data is NOT normal → consider non-parametric alternative</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q8 vs Q9 -->
+  <div class="q8q9-box">
+    <div class="q8q9-title">Q8 vs Q9 — the most common mix-up on this exam</div>
+    <div class="q8q9-grid">
+      <div class="q8q9-side">
+        <div class="q8q9-label">Q8 type — score FROM percentile</div>
+        <div class="q8q9-q">"What value of the math test belongs to the 25th percentile?"</div>
+        <div class="q8q9-a">→ Frequencies → Statistics → add percentile 25</div>
+      </div>
+      <div class="q8q9-side">
+        <div class="q8q9-label">Q9 type — percentile FROM score</div>
+        <div class="q8q9-q">"Which percentile does participant ID 35's score belong to?"</div>
+        <div class="q8q9-a">→ Transform → Rank Cases → Fractional rank %</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════ PANEL 2: RECIPES ═══════════════ -->
+<div id="recipes" class="panel">
+<div class="panel-body">
+  <p class="panel-intro">Full step-by-step instructions for every procedure in both guides. Card colour matches the decision grid. Each card shows: when &amp; why to use it → exact menu path → numbered steps → exam keywords.</p>
+
+  <div class="section-eyebrow">SPSS Practical Guide (Set 1)</div>
+  <div class="section-title">Core procedures</div>
+  <div class="recipes-grid">
+
+    <!-- FREQUENCIES -->
+    <div class="rc rc-blue">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Frequencies</div><div class="rc-sub">distributions · how often · percentages · percentiles</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Use to see how often each value appears. Great first step to "get to know" your dataset. Use for nominal &amp; ordinal variables. Also use to get percentile values (e.g. what score = 25th percentile).</div>
+        <div class="path">Analyze <span class="path-sep">→</span> Descriptive Statistics <span class="path-sep">→</span> Frequencies</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Move variable(s) into the <strong>Variable(s)</strong> box</div></li>
+          <li><div class="step-num">2</div><div>Click <strong>Statistics</strong> → tick Mean, Median, Mode, SD; for percentiles type the number (e.g. 25) → Add → Continue</div></li>
+          <li><div class="step-num">3</div><div>Click <strong>Charts</strong> → Histogram (scale) or Bar Chart (nominal/ordinal) → Continue</div></li>
+          <li><div class="step-num">4</div><div>Click <strong>OK</strong> → read the Statistics table in Output Viewer</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Cumulative % = "what proportion scored this value or lower". Output: Output Viewer.</div>
+        <div class="rc-keywords">
+          <span class="kw-chip">"how often"</span><span class="kw-chip">"what % of participants"</span><span class="kw-chip">"distribution"</span><span class="kw-chip">"describe the sample"</span><span class="kw-chip">"what value is the Nth percentile"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE SUMMARIES -->
+    <div class="rc rc-green">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Case Summaries</div><div class="rc-sub">list individual cases · show raw scores per participant</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Use when you want to list individual cases with their values. Good for checking specific participants or verifying data entry. Does NOT summarise — it shows everything individually.</div>
+        <div class="path">Analyze <span class="path-sep">→</span> Reports <span class="path-sep">→</span> Case Summaries</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Move the variable(s) you want to display into the <strong>Variables</strong> box</div></li>
+          <li><div class="step-num">2</div><div>Optionally add a grouping variable in <strong>Grouping Variable(s)</strong></div></li>
+          <li><div class="step-num">3</div><div>Tick <strong>"Show case numbers"</strong> to identify each row</div></li>
+          <li><div class="step-num">4</div><div>Click <strong>OK</strong> → table shows each case with its values; Total N at the bottom</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Think of it as a printed class register — every student's mark is shown individually. Output: Output Viewer.</div>
+        <div class="rc-keywords">
+          <span class="kw-chip">"list all cases"</span><span class="kw-chip">"show individual scores"</span><span class="kw-chip">"for each participant"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARE MEANS -->
+    <div class="rc rc-coral">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Compare Means</div><div class="rc-sub">mean and SD per group in one table</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Use when you want to compare average scores across groups. You are NOT testing significance yet — just looking at the numbers side by side. Use before deciding which test to run.</div>
+        <div class="path">Analyze <span class="path-sep">→</span> Compare Means <span class="path-sep">→</span> Means</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Move the <strong>outcome variable</strong> to <strong>Dependent List</strong></div></li>
+          <li><div class="step-num">2</div><div>Move the <strong>grouping variable</strong> to <strong>Independent List</strong></div></li>
+          <li><div class="step-num">3</div><div>Click Options → confirm Mean, N, SD are in Cell Statistics → Continue</div></li>
+          <li><div class="step-num">4</div><div>Click <strong>OK</strong> → table shows mean, N, and SD for each group</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>More efficient than Split File when you just need group means in one table. Output: Output Viewer.</div>
+        <div class="rc-keywords">
+          <span class="kw-chip">"mean difference"</span><span class="kw-chip">"compare groups"</span><span class="kw-chip">"average per group"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECODE -->
+    <div class="rc rc-teal">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Recode into Different Variables</div><div class="rc-sub">create categories · reverse scores · collapse groups</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Use when you need to change the values of an existing variable. Classic use: reversing a negatively worded item (1→5, 2→4…). Also for collapsing age or scale ranges into categories.</div>
+        <div class="path">Transform <span class="path-sep">→</span> Recode into Different Variables</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Move original variable into <strong>Input Variable → Output Variable</strong> box</div></li>
+          <li><div class="step-num">2</div><div>Type a new name in <strong>Output Variable Name</strong> → click <strong>Change</strong></div></li>
+          <li><div class="step-num">3</div><div>Click <strong>Old and New Values</strong></div></li>
+          <li><div class="step-num">4</div><div>For ranges: click "Range" → e.g. 1 through 10 → New value: 1 → Add. Repeat for all categories.</div></li>
+          <li><div class="step-num">5</div><div>For reversing 1–5 scale: old 1→new 5, old 2→new 4, old 3→new 3, etc.</div></li>
+          <li><div class="step-num">6</div><div>Click Continue → OK → check <strong>Data View</strong> for new column</div></li>
+        </ol>
+        <div class="warn"><span class="warn-icon">⚠</span>ALWAYS use "Different Variables" — never overwrite the original. <strong>Nothing appears in Output Viewer</strong> — check Data View only.</div>
+        <div class="rc-keywords">
+          <span class="kw-chip">"reverse score"</span><span class="kw-chip">"negatively worded item"</span><span class="kw-chip">"create categories"</span><span class="kw-chip">"collapse groups into"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPUTE -->
+    <div class="rc rc-green">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Compute Variable</div><div class="rc-sub">total scores · mean of items · composite variables</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Use when you want to create a new variable using arithmetic on existing variables. Most common: calculating a scale total or mean score from multiple questionnaire items.</div>
+        <div class="path">Transform <span class="path-sep">→</span> Compute Variable</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Type a name in <strong>Target Variable</strong> (e.g. <span class="code">anxiety_total</span>)</div></li>
+          <li><div class="step-num">2</div><div>In <strong>Numeric Expression</strong>, type your formula</div></li>
+          <li><div class="step-num">3</div><div>Mean: <span class="code">MEAN(item1, item2, item3)</span> — handles missing values automatically</div></li>
+          <li><div class="step-num">4</div><div>Sum: <span class="code">SUM(item1, item2, item3)</span> &nbsp;·&nbsp; Manual: <span class="code">(item1 + item2 + item3) / 3</span></div></li>
+          <li><div class="step-num">5</div><div>Click OK → new variable appears in <strong>Data View</strong> (not Output Viewer!)</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Use MEAN() not manual division — it handles missing data. Output: Data View only.</div>
+        <div class="rc-keywords">
+          <span class="kw-chip">"calculate a total score"</span><span class="kw-chip">"create a composite"</span><span class="kw-chip">"sum the items"</span><span class="kw-chip">"scale score"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COUNT VALUES -->
+    <div class="rc rc-teal">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Count Values Within Cases</div><div class="rc-sub">count how many times a value appears per person</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Use when you want to count how many times a specific value appears across multiple variables FOR EACH CASE. Classic use: counting how many symptoms a participant endorsed.</div>
+        <div class="path">Transform <span class="path-sep">→</span> Count Values Within Cases</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Type a name in <strong>Target Variable</strong></div></li>
+          <li><div class="step-num">2</div><div>Move all the variables to count across into the <strong>Variables</strong> box</div></li>
+          <li><div class="step-num">3</div><div>Click <strong>Define Values</strong> → specify the value to count (e.g. value = 1) → Add → Continue</div></li>
+          <li><div class="step-num">4</div><div>Click OK → new variable in <strong>Data View</strong> shows the count per row</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Counts per ROW (per person), not per column (per variable). Output: Data View only.</div>
+        <div class="rc-keywords">
+          <span class="kw-chip">"how many symptoms"</span><span class="kw-chip">"number of items endorsed"</span><span class="kw-chip">"count occurrences per person"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPLIT FILE -->
+    <div class="rc rc-green">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Split File</div><div class="rc-sub">run any analysis separately per group</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Use when you want to run ANY analysis separately for different groups. Like putting a divider in a filing cabinet — everything after gets sorted into separate folders.</div>
+        <div class="path">Data <span class="path-sep">→</span> Split File</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Select <strong>"Organize output by groups"</strong></div></li>
+          <li><div class="step-num">2</div><div>Move grouping variable (e.g. gender) to <strong>Groups Based on</strong></div></li>
+          <li><div class="step-num">3</div><div>Click OK → status bar shows <strong>Split File On</strong></div></li>
+          <li><div class="step-num">4</div><div>Run your analysis → output repeats for each group separately</div></li>
+          <li><div class="step-num">5</div><div><strong>TURN OFF:</strong> Data → Split File → "Analyze all cases" → OK</div></li>
+        </ol>
+        <div class="warn"><span class="warn-icon">⚠</span>Forgetting to turn Split File off is the <strong>#1 SPSS exam mistake</strong>. Every subsequent analysis stays split.</div>
+        <div class="rc-keywords">
+          <span class="kw-chip">"separately for each group"</span><span class="kw-chip">"for males and females separately"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Z-SCORES -->
+    <div class="rc rc-purple">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Z-scores (save standardised)</div><div class="rc-sub">z-score for a specific participant · standardise · outlier detection</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Use when you want to standardise scores so different variables are on the same scale. Z-scores tell you how many SDs a score is above/below the mean. Also to identify outliers (|Z| &gt; 3.29).</div>
+        <div class="path">Analyze <span class="path-sep">→</span> Descriptive Statistics <span class="path-sep">→</span> Descriptives</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Move variable(s) into the <strong>Variable(s)</strong> box</div></li>
+          <li><div class="step-num">2</div><div>Tick <strong>"Save standardized values as variables"</strong> checkbox at the bottom</div></li>
+          <li><div class="step-num">3</div><div>Click OK → new column <strong>Z[varname]</strong> appears in Data View</div></li>
+          <li><div class="step-num">4</div><div>Find the requested participant ID row → read their Z value</div></li>
+          <li><div class="step-num">5</div><div>To show more decimals: Variable View → Z variable → change Decimals to 5</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Z = 0 → score equals the mean. Z = +1 → one SD above mean. |Z| &gt; 3.29 → extreme outlier. Output: Output Viewer + <strong>Data View</strong> (Z column).</div>
+        <div class="rc-keywords">
+          <span class="kw-chip">"standardise"</span><span class="kw-chip">"z-score"</span><span class="kw-chip">"how many SDs above/below mean"</span><span class="kw-chip">"outlier"</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-eyebrow" style="margin-top:2.5rem">SPSS Guide Set 2</div>
+  <div class="section-title">Additional procedures</div>
+  <div class="recipes-grid">
+
+    <!-- EXPLORE -->
+    <div class="rc rc-amber">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Explore</div><div class="rc-sub">normality check · Shapiro-Wilk · full descriptives with plots</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Essential BEFORE running a t-test or ANOVA — you need to check normality. Use to examine outliers, skewness, kurtosis, and the shape of your distribution.</div>
+        <div class="path">Analyze <span class="path-sep">→</span> Descriptive Statistics <span class="path-sep">→</span> Explore</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Move your continuous variable(s) to the <strong>Dependent List</strong> box</div></li>
+          <li><div class="step-num">2</div><div>Optionally move a grouping variable to the <strong>Factor List</strong> to get stats per group</div></li>
+          <li><div class="step-num">3</div><div>Click <strong>Plots</strong> → tick <strong>"Normality plots with tests"</strong> → tick Histogram</div></li>
+          <li><div class="step-num">4</div><div>Under Display: select <strong>"Both"</strong> (Statistics + Plots)</div></li>
+          <li><div class="step-num">5</div><div>Click Continue → OK</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Output: Descriptives table (mean, SD, skewness, kurtosis), percentiles, <strong>Shapiro-Wilk</strong> (use for N &lt; 50), histogram, Q-Q plot, boxplot. <strong>Sig. &gt; .05 = data IS normal</strong> (keep parametric). Sig. &lt; .05 = NOT normal.</div>
+        <div class="rc-keywords">
+          <span class="kw-chip">"check normality"</span><span class="kw-chip">"test assumptions"</span><span class="kw-chip">"before running t-test"</span><span class="kw-chip">"is the distribution normal"</span><span class="kw-chip">"outliers"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RANK CASES -->
+    <div class="rc rc-amber">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Rank Cases</div><div class="rc-sub">which percentile does a score belong to · rank order</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Use when you want to rank participants on a variable, or to find which percentile a specific score belongs to. Converts raw scores into rank positions or percentile values.</div>
+        <div class="path">Transform <span class="path-sep">→</span> Rank Cases</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Move variable into the <strong>Variable(s)</strong> box</div></li>
+          <li><div class="step-num">2</div><div>Under <strong>"Assign Rank 1 to"</strong>: choose Smallest value (ascending) or Largest value (descending)</div></li>
+          <li><div class="step-num">3</div><div>Click <strong>Rank Types</strong> → tick <strong>Fractional rank as %</strong> (for percentile questions) → Continue</div></li>
+          <li><div class="step-num">4</div><div>Click OK → new variable <strong>P[varname]</strong> appears in Data View</div></li>
+          <li><div class="step-num">5</div><div>Find the requested participant ID → read their value → round as required</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Tied scores get the average rank (e.g. 4th and 5th tied → both get 4.5). Output: Data View only.</div>
+        <div class="rc-keywords">
+          <span class="kw-chip">"rank the participants"</span><span class="kw-chip">"which percentile does this score belong to"</span><span class="kw-chip">"rank order"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SELECT CASES -->
+    <div class="rc rc-amber">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Select Cases</div><div class="rc-sub">filter to a subgroup · compound conditions · count N</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Use when you need to filter to a specific subgroup, especially when two conditions must be true simultaneously (something Split File can't do).</div>
+        <div class="path">Data <span class="path-sep">→</span> Select Cases</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Select <strong>"If condition is satisfied"</strong> → click <strong>If...</strong></div></li>
+          <li><div class="step-num">2</div><div>Type your condition: e.g. <span class="code">edu = 2 &amp; remedial = 0</span> or <span class="code">geo &gt; 5 &amp; hist &gt; 5</span></div></li>
+          <li><div class="step-num">3</div><div>Continue → OK → unselected rows show a diagonal slash in Data View</div></li>
+          <li><div class="step-num">4</div><div>Run your analysis → only selected cases are included</div></li>
+          <li><div class="step-num">5</div><div><strong>TURN OFF:</strong> Data → Select Cases → "All cases" → OK</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>To count cases meeting criteria: after selecting, run Frequencies and read <strong>Valid N</strong>. The &amp; operator means BOTH conditions must be true.</div>
+      </div>
+    </div>
+
+    <!-- CROSSTABS -->
+    <div class="rc rc-teal">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Crosstabs</div><div class="rc-sub">two categorical variables · percentages within groups · chi-square</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Use when examining the relationship between two categorical variables. Shows how the frequency of one variable is distributed across categories of another. Also used for the Chi-Square test of independence.</div>
+        <div class="path">Analyze <span class="path-sep">→</span> Descriptive Statistics <span class="path-sep">→</span> Crosstabs</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Move one variable to <strong>Row(s)</strong>, the other to <strong>Column(s)</strong></div></li>
+          <li><div class="step-num">2</div><div>Click <strong>Statistics</strong> → tick Chi-Square if significance test is needed</div></li>
+          <li><div class="step-num">3</div><div>Click <strong>Cells</strong> → tick Observed counts + Row %, Column %, and/or Total % as needed</div></li>
+          <li><div class="step-num">4</div><div>Click Continue → OK</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Row % = "of all people in this row, what % are in each column?" Chi-Square assumption: all expected cell counts ≥ 5. Output: Output Viewer.</div>
+        <div class="rc-keywords">
+          <span class="kw-chip">"contingency table"</span><span class="kw-chip">"cross-tabulation"</span><span class="kw-chip">"chi-square"</span><span class="kw-chip">"is there an association"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- INDEPENDENT T-TEST -->
+    <div class="rc rc-red">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Independent Samples T-test</div><div class="rc-sub">test mean difference between two separate groups</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Use when comparing means of two SEPARATE (independent) groups on one continuous variable. Groups are independent — different people in each group (males vs females, control vs treatment).</div>
+        <div class="path">Analyze <span class="path-sep">→</span> Compare Means <span class="path-sep">→</span> Independent-Samples T Test</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Move the <strong>continuous outcome variable</strong> into <strong>Test Variable(s)</strong></div></li>
+          <li><div class="step-num">2</div><div>Move the <strong>grouping variable</strong> into <strong>Grouping Variable</strong></div></li>
+          <li><div class="step-num">3</div><div>Click <strong>Define Groups</strong> → enter the two group codes (e.g. 1 and 2) → Continue</div></li>
+          <li><div class="step-num">4</div><div>Click OK → check <strong>Levene's Test</strong> Sig. first</div></li>
+          <li><div class="step-num">5</div><div>Sig. &gt; .05 → TOP row (equal variances assumed) · Sig. &lt; .05 → BOTTOM row → read <strong>t value</strong></div></li>
+        </ol>
+        <div class="warn"><span class="warn-icon">⚠</span>NEVER skip Levene's test. It determines which row to read. Report t, not F. t can be negative — include the sign.</div>
+        <div class="rc-keywords">
+          <span class="kw-chip">"do two groups differ"</span><span class="kw-chip">"compare males and females"</span><span class="kw-chip">"independent groups"</span><span class="kw-chip">"between-subjects"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAIRED T-TEST -->
+    <div class="rc rc-pink">
+      <div class="rc-head"><div class="rc-colour-bar"></div><div><div class="rc-title">Paired Samples T-test</div><div class="rc-sub">same participants measured twice · before/after · pre-post</div></div></div>
+      <div class="rc-body">
+        <div class="rc-when">Use when comparing means from the SAME participants measured at two time points or conditions. Data is paired — each person provides two scores. Key distinction: same people = paired; different people = independent.</div>
+        <div class="path">Analyze <span class="path-sep">→</span> Compare Means <span class="path-sep">→</span> Paired-Samples T Test</div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Click the <strong>first variable</strong> (e.g. pre-test score) → then <strong>Ctrl+click</strong> the <strong>second variable</strong> (e.g. post-test)</div></li>
+          <li><div class="step-num">2</div><div>Click the arrow → both variables move as a pair into <strong>Paired Variables</strong></div></li>
+          <li><div class="step-num">3</div><div>Click <strong>OK</strong></div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Output: Paired Samples Statistics (mean, N, SD) · Paired Samples Correlations · Paired Samples Test table (mean difference, SD of diff, 95% CI, t, df, Sig. 2-tailed). If Sig. &lt; .05 → significant change.</div>
+        <div class="rc-keywords">
+          <span class="kw-chip">"before and after"</span><span class="kw-chip">"pre-test post-test"</span><span class="kw-chip">"same participants twice"</span><span class="kw-chip">"within-subjects"</span><span class="kw-chip">"did scores change"</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════ PANEL 3: EXAM ═══════════════ -->
+<div id="exam" class="panel">
+<div class="panel-body">
+  <p class="panel-intro">The 10 questions from the 2019–2020 practice exam. Try to recall the procedure yourself first — then click to reveal. Card colour = procedure category.</p>
+
+  <div class="q-list">
+
+    <div class="q-card q-blue" id="q1">
+      <div class="q-trigger" onclick="toggleQ('q1')">
+        <div class="q-badge">1</div>
+        <div class="q-text">
+          <div class="q-title">What is the <strong>mean grade</strong> on the final Dutch exam? <em style="color:var(--text2); font-weight:300">(2 decimal places)</em></div>
+          <div class="q-dataset">Dataset 1 · 200 Dutch high school students</div>
+        </div>
+        <div class="q-proc-tag">Descriptives</div>
+        <div class="q-chevron">▼</div>
+      </div>
+      <div class="q-body">
+        <div class="q-divider"></div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Analyze → Descriptive Statistics → <strong>Descriptives</strong></div></li>
+          <li><div class="step-num">2</div><div>Move the grade variable into Variable(s) → OK</div></li>
+          <li><div class="step-num">3</div><div>Read the <strong>Mean</strong> from the output table to 2 decimal places</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Both Descriptives and Frequencies give the mean. Descriptives is faster for a single summary number. Report exactly 2 decimal places even if the third is 0.</div>
+      </div>
+    </div>
+
+    <div class="q-card q-green" id="q2">
+      <div class="q-trigger" onclick="toggleQ('q2')">
+        <div class="q-badge">2</div>
+        <div class="q-text">
+          <div class="q-title">What is the <strong>SD of stress</strong> for students who had <strong>remedial teaching</strong>? <em style="color:var(--text2); font-weight:300">(3 decimal places)</em></div>
+          <div class="q-dataset">Dataset 1 · subgroup filter required</div>
+        </div>
+        <div class="q-proc-tag">Split File + Descriptives</div>
+        <div class="q-chevron">▼</div>
+      </div>
+      <div class="q-body">
+        <div class="q-divider"></div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Data → Split File → "Organize output by groups" → move <strong>remedial</strong> variable → OK</div></li>
+          <li><div class="step-num">2</div><div>Analyze → Descriptive Statistics → Descriptives → move <strong>stress</strong> variable → OK</div></li>
+          <li><div class="step-num">3</div><div>Find the "had remedial teaching" group in output → read <strong>Std. Deviation</strong> to 3 decimal places</div></li>
+          <li><div class="step-num">4</div><div><strong>TURN OFF Split File:</strong> Data → Split File → "Analyze all cases" → OK</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Alternative: Data → Select Cases → If: remedial = 1 → run Descriptives on stress. Same result either way.</div>
+      </div>
+    </div>
+
+    <div class="q-card q-amber" id="q3">
+      <div class="q-trigger" onclick="toggleQ('q3')">
+        <div class="q-badge">3</div>
+        <div class="q-text">
+          <div class="q-title">What is the mean grade for students with <strong>havo education AND no remedial teaching</strong>? <em style="color:var(--text2); font-weight:300">(2 dp)</em></div>
+          <div class="q-dataset">Dataset 1 · two simultaneous conditions</div>
+        </div>
+        <div class="q-proc-tag">Select Cases (compound)</div>
+        <div class="q-chevron">▼</div>
+      </div>
+      <div class="q-body">
+        <div class="q-divider"></div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Check value labels first: right-click the education variable in Variable View to see which number = havo</div></li>
+          <li><div class="step-num">2</div><div>Data → Select Cases → If condition is satisfied → If... → type e.g. <span class="code">education = 2 &amp; remedial = 0</span></div></li>
+          <li><div class="step-num">3</div><div>Continue → OK → run Descriptives on the grade variable → read mean</div></li>
+          <li><div class="step-num">4</div><div>Turn off: Data → Select Cases → All cases → OK</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>You cannot use Split File for two simultaneous conditions. The &amp; operator means BOTH must be true at the same time.</div>
+      </div>
+    </div>
+
+    <div class="q-card q-coral" id="q4">
+      <div class="q-trigger" onclick="toggleQ('q4')">
+        <div class="q-badge">4</div>
+        <div class="q-text">
+          <div class="q-title">How many students scored <strong>above 5 on both geography AND history</strong>? <em style="color:var(--text2); font-weight:300">(0 decimal places)</em></div>
+          <div class="q-dataset">Dataset 2 · 80 students · two exam scores</div>
+        </div>
+        <div class="q-proc-tag">Select Cases → count N</div>
+        <div class="q-chevron">▼</div>
+      </div>
+      <div class="q-body">
+        <div class="q-divider"></div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Data → Select Cases → If condition is satisfied → If...</div></li>
+          <li><div class="step-num">2</div><div>Type: <span class="code">geography &gt; 5 &amp; history &gt; 5</span> → Continue → OK</div></li>
+          <li><div class="step-num">3</div><div>Analyze → Descriptive Statistics → Frequencies → any variable → OK → read <strong>Valid N</strong></div></li>
+          <li><div class="step-num">4</div><div>Turn off Select Cases afterwards</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>After selecting, Valid N at the top of any frequency table = your count. Report as a whole number.</div>
+      </div>
+    </div>
+
+    <div class="q-card q-purple" id="q5">
+      <div class="q-trigger" onclick="toggleQ('q5')">
+        <div class="q-badge">5</div>
+        <div class="q-text">
+          <div class="q-title">What is the <strong>z-score for geography</strong> of participant with ID number 22? <em style="color:var(--text2); font-weight:300">(5 decimal places)</em></div>
+          <div class="q-dataset">Dataset 2</div>
+        </div>
+        <div class="q-proc-tag">Z-scores (Descriptives)</div>
+        <div class="q-chevron">▼</div>
+      </div>
+      <div class="q-body">
+        <div class="q-divider"></div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Analyze → Descriptive Statistics → <strong>Descriptives</strong></div></li>
+          <li><div class="step-num">2</div><div>Move <strong>geography</strong> into Variable(s)</div></li>
+          <li><div class="step-num">3</div><div>Tick <strong>"Save standardized values as variables"</strong> checkbox → OK</div></li>
+          <li><div class="step-num">4</div><div>Go to Data View → find column <strong>Zgeography</strong></div></li>
+          <li><div class="step-num">5</div><div>Find row where ID = 22. To show 5 decimals: Variable View → Zgeography → set Decimals to 5</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Z-scores appear in Data View only. Always increase decimal places in Variable View before reading the final answer.</div>
+      </div>
+    </div>
+
+    <div class="q-card q-coral" id="q6">
+      <div class="q-trigger" onclick="toggleQ('q6')">
+        <div class="q-badge">6</div>
+        <div class="q-text">
+          <div class="q-title">What is the <strong>mean duration of guidance for parents with ADHD children</strong>? <em style="color:var(--text2); font-weight:300">(2 dp)</em></div>
+          <div class="q-dataset">Dataset 3 · guidance duration by problem type</div>
+        </div>
+        <div class="q-proc-tag">Compare Means</div>
+        <div class="q-chevron">▼</div>
+      </div>
+      <div class="q-body">
+        <div class="q-divider"></div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Analyze → Compare Means → <strong>Means</strong></div></li>
+          <li><div class="step-num">2</div><div>Move <strong>duration</strong> to Dependent List · move <strong>problem_type</strong> to Independent List</div></li>
+          <li><div class="step-num">3</div><div>Click OK → find the ADHD row in the output table → read <strong>Mean</strong> to 2 decimal places</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Compare Means gives all group means in one table — more efficient than Split File for this type of question.</div>
+      </div>
+    </div>
+
+    <div class="q-card q-teal" id="q7">
+      <div class="q-trigger" onclick="toggleQ('q7')">
+        <div class="q-badge">7</div>
+        <div class="q-text">
+          <div class="q-title">Recode duration into 3 categories (1–10, 11–20, 21–30). What <strong>% of the 11–20 month group had a child with ASD</strong>? <em style="color:var(--text2); font-weight:300">(1 dp)</em></div>
+          <div class="q-dataset">Dataset 3 · recode then crosstab</div>
+        </div>
+        <div class="q-proc-tag">Recode → Crosstabs</div>
+        <div class="q-chevron">▼</div>
+      </div>
+      <div class="q-body">
+        <div class="q-divider"></div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Transform → Recode into Different Variables → move <strong>duration</strong> → name new variable <span class="code">duration_cat</span> → click Change</div></li>
+          <li><div class="step-num">2</div><div>Old and New Values → Range: 1 through 10 → New value: 1 → Add</div></li>
+          <li><div class="step-num">3</div><div>Range: 11 through 20 → New value: 2 → Add</div></li>
+          <li><div class="step-num">4</div><div>Range: 21 through 30 → New value: 3 → Add → Continue → OK</div></li>
+          <li><div class="step-num">5</div><div>Analyze → Descriptive Statistics → <strong>Crosstabs</strong> → duration_cat in Rows · problem_type in Columns</div></li>
+          <li><div class="step-num">6</div><div>Cells → tick <strong>Row percentages</strong> → Continue → OK</div></li>
+          <li><div class="step-num">7</div><div>Find Row 2 (category 2 = 11–20 months) → find the ASD column → read row % to 1 decimal place</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Row % = "of all people in the 11–20 month row, what % had ASD?" Read carefully: this is row %, not column %.</div>
+      </div>
+    </div>
+
+    <div class="q-card q-green" id="q8">
+      <div class="q-trigger" onclick="toggleQ('q8')">
+        <div class="q-badge">8</div>
+        <div class="q-text">
+          <div class="q-title">What value of the math test <strong>belongs to the 25th percentile</strong> for Dutch children? <em style="color:var(--text2); font-weight:300">(0 dp)</em></div>
+          <div class="q-dataset">Dataset 4 · Dutch vs non-Dutch children</div>
+        </div>
+        <div class="q-proc-tag">Split File + Frequencies → Percentiles</div>
+        <div class="q-chevron">▼</div>
+      </div>
+      <div class="q-body">
+        <div class="q-divider"></div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Data → Split File → Organize by groups → move <strong>nationality</strong> → OK</div></li>
+          <li><div class="step-num">2</div><div>Analyze → Descriptive Statistics → Frequencies → move <strong>math test</strong> variable</div></li>
+          <li><div class="step-num">3</div><div>Statistics → Percentile Values → tick "Percentiles" → type <strong>25</strong> → Add → Continue → OK</div></li>
+          <li><div class="step-num">4</div><div>Find the Dutch group in output → read value next to Percentile 25 → report as whole number</div></li>
+          <li><div class="step-num">5</div><div>Turn off Split File</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>This asks "what score = the 25th percentile?" → Frequencies → Percentiles. The reverse direction (Q9) uses Rank Cases.</div>
+      </div>
+    </div>
+
+    <div class="q-card q-amber" id="q9">
+      <div class="q-trigger" onclick="toggleQ('q9')">
+        <div class="q-badge">9</div>
+        <div class="q-text">
+          <div class="q-title">Which <strong>percentile does the IQ score of participant ID 35</strong> belong to? <em style="color:var(--text2); font-weight:300">(0 dp)</em></div>
+          <div class="q-dataset">Dataset 4</div>
+        </div>
+        <div class="q-proc-tag">Rank Cases</div>
+        <div class="q-chevron">▼</div>
+      </div>
+      <div class="q-body">
+        <div class="q-divider"></div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Transform → <strong>Rank Cases</strong></div></li>
+          <li><div class="step-num">2</div><div>Move <strong>IQ</strong> variable into Variable(s)</div></li>
+          <li><div class="step-num">3</div><div>Click <strong>Rank Types</strong> → tick <strong>Fractional rank as %</strong> → Continue</div></li>
+          <li><div class="step-num">4</div><div>Click OK → new variable <strong>PIQSCORE</strong> appears in Data View</div></li>
+          <li><div class="step-num">5</div><div>Find row where ID = 35 → read percentile value → round to 0 decimal places</div></li>
+        </ol>
+        <div class="warn"><span class="warn-icon">⚠</span>Q8 = "what score is the 25th percentile?" → Frequencies. Q9 = "what percentile is this score?" → Rank Cases. Opposite directions — the most common error on this exam.</div>
+      </div>
+    </div>
+
+    <div class="q-card q-red" id="q10">
+      <div class="q-trigger" onclick="toggleQ('q10')">
+        <div class="q-badge">10</div>
+        <div class="q-text">
+          <div class="q-title">Test the difference on the Dutch language test between Dutch and non-Dutch children. What is the <strong>t-score</strong>? <em style="color:var(--text2); font-weight:300">(3 dp)</em></div>
+          <div class="q-dataset">Dataset 4</div>
+        </div>
+        <div class="q-proc-tag">Independent T-test</div>
+        <div class="q-chevron">▼</div>
+      </div>
+      <div class="q-body">
+        <div class="q-divider"></div>
+        <ol class="steps-list">
+          <li><div class="step-num">1</div><div>Analyze → Compare Means → <strong>Independent Samples T-test</strong></div></li>
+          <li><div class="step-num">2</div><div>Move <strong>Dutch language test</strong> score into Test Variable(s)</div></li>
+          <li><div class="step-num">3</div><div>Move <strong>nationality</strong> variable into Grouping Variable</div></li>
+          <li><div class="step-num">4</div><div>Click <strong>Define Groups</strong> → enter group codes (e.g. 1 = Dutch, 2 = non-Dutch) → Continue → OK</div></li>
+          <li><div class="step-num">5</div><div>Check <strong>Levene's Test</strong>: Sig. &gt; .05 → top row · Sig. &lt; .05 → bottom row → report <strong>t</strong> to 3 decimal places</div></li>
+        </ol>
+        <div class="tip"><span class="tip-icon">💡</span>Always check Levene's first. Report t (not F, not p). t can be negative — include the sign. These groups are different people → independent (not paired).</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════ PANEL 4: CHEATSHEET ═══════════════ -->
+<div id="cheat" class="panel">
+<div class="panel-body">
+  <p class="panel-intro">Pre-analysis checklist, the 5 most common mistakes, output location table, and keyword lookup — everything you need in the exam room.</p>
+
+  <div class="cheat-cols">
+    <div>
+      <div class="cheat-card" style="margin-bottom:16px">
+        <div class="cheat-card-head">Pre-analysis checklist</div>
+        <div class="cheat-card-body">
+          <div class="check-item"><div class="check-box"></div><div><strong>Recode or Compute?</strong> Check Data View for the new variable column — not Output Viewer</div></div>
+          <div class="check-item"><div class="check-box"></div><div><strong>Running a t-test?</strong> Run Explore FIRST to check normality (Shapiro-Wilk)</div></div>
+          <div class="check-item"><div class="check-box"></div><div><strong>Independent t-test?</strong> Always check Levene's before reading the t value</div></div>
+          <div class="check-item"><div class="check-box"></div><div><strong>Used Split File or Select Cases?</strong> Turn it OFF before the next analysis</div></div>
+          <div class="check-item"><div class="check-box"></div><div><strong>Crosstabs with Chi-Square?</strong> Check all expected cell counts are ≥ 5</div></div>
+        </div>
+      </div>
+
+      <div class="cheat-card">
+        <div class="cheat-card-head">The 5 most common mistakes</div>
+        <div class="cheat-card-body">
+          <div class="danger-item"><div class="danger-dot"></div><div><strong>Forgetting to turn Split File off.</strong> Every analysis stays split until you go Data → Split File → Analyze all cases. Say so in your exam answer.</div></div>
+          <div class="danger-item"><div class="danger-dot"></div><div><strong>Recoding into the Same Variable.</strong> Always "Different Variables". Recoding same permanently destroys original data.</div></div>
+          <div class="danger-item"><div class="danger-dot"></div><div><strong>Looking in Output Viewer for Recode / Compute / Rank Cases.</strong> These only appear in Data View.</div></div>
+          <div class="danger-item"><div class="danger-dot"></div><div><strong>Mixing up Q8 vs Q9 direction.</strong> "What score = 25th percentile?" → Frequencies. "What percentile = this score?" → Rank Cases.</div></div>
+          <div class="danger-item"><div class="danger-dot"></div><div><strong>Ignoring Levene's test.</strong> Sig. &gt; .05 → top row. Sig. &lt; .05 → bottom row. Report t, not F.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="cheat-card">
+        <div class="cheat-card-head">Where does the output appear?</div>
+        <div class="cheat-card-body" style="padding:0">
+          <table>
+            <thead><tr><th>Procedure</th><th>Output location</th></tr></thead>
+            <tbody>
+              <tr><td>Frequencies</td><td>Output Viewer ✓</td></tr>
+              <tr><td>Descriptives</td><td>Output Viewer ✓</td></tr>
+              <tr><td>Explore</td><td>Output Viewer ✓ (with plots)</td></tr>
+              <tr><td>Z-scores</td><td>Output Viewer + <strong>Data View</strong> (Z column)</td></tr>
+              <tr><td>Compare Means</td><td>Output Viewer ✓</td></tr>
+              <tr><td>Independent T-test</td><td>Output Viewer ✓</td></tr>
+              <tr><td>Paired T-test</td><td>Output Viewer ✓</td></tr>
+              <tr><td>Crosstabs</td><td>Output Viewer ✓</td></tr>
+              <tr><td>Case Summaries</td><td>Output Viewer ✓</td></tr>
+              <tr class="danger"><td>Recode</td><td>Data View ONLY — not Output Viewer!</td></tr>
+              <tr class="danger"><td>Compute Variable</td><td>Data View ONLY — not Output Viewer!</td></tr>
+              <tr class="danger"><td>Rank Cases</td><td>Data View ONLY — not Output Viewer!</td></tr>
+              <tr class="danger"><td>Count Values Within Cases</td><td>Data View ONLY — not Output Viewer!</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px">
+    <div class="cheat-card">
+      <div class="cheat-card-head">Keyword → procedure lookup</div>
+      <div class="cheat-card-body" style="padding:0">
+        <table class="kw-table">
+          <thead><tr><th>Question says…</th><th>Use this procedure</th></tr></thead>
+          <tbody>
+            <tr><td>"mean / SD for group X"</td><td>Split File + Descriptives</td></tr>
+            <tr><td>"mean for X and Y simultaneously" (two conditions)</td><td>Select Cases with compound If condition</td></tr>
+            <tr><td>"how many scored above X on both tests"</td><td>Select Cases → var1 &gt; X &amp; var2 &gt; X → count Valid N</td></tr>
+            <tr><td>"z-score of participant ID X"</td><td>Descriptives → tick Save standardised → read Z column in Data View</td></tr>
+            <tr><td>"what value is the Nth percentile"</td><td>Frequencies → Statistics → Percentiles</td></tr>
+            <tr><td>"which percentile does score X belong to"</td><td>Transform → Rank Cases → Fractional rank as %</td></tr>
+            <tr><td>"recode into N categories"</td><td>Transform → Recode into Different Variables</td></tr>
+            <tr><td>"compute / calculate a total score"</td><td>Transform → Compute Variable → SUM() or MEAN()</td></tr>
+            <tr><td>"test the difference" / "t-score" / "independent groups"</td><td>Independent Samples T-test → check Levene's first</td></tr>
+            <tr><td>"before and after" / "same people measured twice"</td><td>Paired Samples T-test</td></tr>
+            <tr><td>"check normality" / "test assumptions"</td><td>Analyze → Descriptive Statistics → Explore</td></tr>
+            <tr><td>"percentage within [category]" / "cross-tabulation"</td><td>Crosstabs → Cells → Row % or Column %</td></tr>
+            <tr><td>"compare averages per group"</td><td>Analyze → Compare Means → Means</td></tr>
+            <tr><td>"how many symptoms per participant"</td><td>Transform → Count Values Within Cases</td></tr>
+            <tr><td>"list individual scores per participant"</td><td>Analyze → Reports → Case Summaries</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-box">
+    <strong>Tonight's plan:</strong> Tab 3 — cover the steps for each question, try to recall the procedure, then reveal. Do Q7 (recode + crosstabs) and Q9 (rank cases) twice — they're the trickiest. Tab 1 key distinctions has everything you need to tell paired from independent and explore from frequencies. You have all of this. 🎓
+  </div>
+
+</div>
+</div>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleQ(id) {
+  const card = document.getElementById(id);
+  const body = card.querySelector('.q-body');
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.q-card').forEach(c => {
+    c.classList.remove('open');
+    c.querySelector('.q-body').classList.remove('open');
+  });
+  if (!isOpen) {
+    card.classList.add('open');
+    body.classList.add('open');
+    setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+  }
+}
+</script>
+</body>
+</html>
